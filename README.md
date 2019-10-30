@@ -25,7 +25,6 @@ void main() {
 ```
 
 #### 2. Create and use Proxied instance
-You do NOT need to initialize reflectable.
 ```dart
 // file: main.dart
 import "package:proxiable/proxiable.dart";
