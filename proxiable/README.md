@@ -29,6 +29,8 @@ void main() {
 // file: main.dart
 import "package:proxiable/proxiable.dart";
 
+// mark the class with @proxiable is required
+@proxiable
 class Animal {
   void walk() {
     print("Animal is waling.");
