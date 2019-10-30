@@ -3,7 +3,7 @@ description: >
   Proxy provides static methods for creating dynamic proxy classes and instances,
   and it is also the superclass of all dynamic proxy classes created by those methods.
 version: 0.0.1
-homepage: https://www.example.com
+homepage: https://github.com/copydog/proxiable
 author: Copydog <775150@qq.com>
 
 environment:
