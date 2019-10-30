@@ -1,0 +1,3 @@
+class EnableProxiable {
+  const EnableProxiable();
+}
