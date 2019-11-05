@@ -10,7 +10,7 @@ import 'package:proxiable/src/builder/template/proxiable_template.dart';
 import 'package:proxiable/src/builder/util/cache_utils.dart';
 import 'package:source_gen/source_gen.dart';
 
-class ProxiableWriter extends GeneratorForAnnotation<GenerateProxiableCode> {
+class ProxiableWriter extends GeneratorForAnnotation<UseEnableProxiable> {
   @override
   generateForAnnotatedElement(
     Element element,

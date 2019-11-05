@@ -8,7 +8,7 @@ import 'package:proxiable/src/builder/util/cache_utils.dart';
 import 'package:proxiable/src/builder/util/class_element_utils.dart';
 import 'package:source_gen/source_gen.dart';
 
-class ProxiableCollector extends GeneratorForAnnotation<Proxiable> {
+class ProxiableCollector extends GeneratorForAnnotation<UseProxiable> {
   @override
   generateForAnnotatedElement(
     Element element,

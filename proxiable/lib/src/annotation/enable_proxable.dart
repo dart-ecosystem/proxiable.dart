@@ -1,5 +1,5 @@
-class EnableProxiable implements GenerateProxiableCode {
+class EnableProxiable implements UseEnableProxiable {
   const EnableProxiable();
 }
 
-abstract class GenerateProxiableCode {}
+abstract class UseEnableProxiable {}

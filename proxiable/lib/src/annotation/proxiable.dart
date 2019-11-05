@@ -1,6 +1,6 @@
 import 'package:reflectable/reflectable.dart';
 
-class Proxiable extends Reflectable {
+class Proxiable extends Reflectable implements UseProxiable {
 //  final String name;
 
   const Proxiable()
@@ -12,3 +12,5 @@ class Proxiable extends Reflectable {
 }
 
 const proxiable = Proxiable();
+
+abstract class UseProxiable {}
