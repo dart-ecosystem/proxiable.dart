@@ -16,12 +16,12 @@ builders:
     builder_factories: ['proxiableCollector']
     build_extensions: { '.dart': ['.proxiable_cache.part'] }
     runs_before: ['proxiable|proxiableCombiner']
-    auto_apply: dependents
+    auto_apply: root_package
     build_to: cache
   proxiable|proxiableCombiner:
     import: 'package:proxiable/src/builder/builder.dart'
     builder_factories: ['proxiableCombiner']
     build_extensions: { '.dart': ['.proxiable.g.dart'] }
     runs_before: ['reflectable']
-    auto_apply: dependents
+    auto_apply: root_package
     build_to: source
