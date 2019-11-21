@@ -3,7 +3,8 @@
 
 import "dart:core";
 import 'package:demo/src/Animal.dart' as prefix1;
-import 'package:proxiable/src/annotation/proxiable.dart' as prefix0;
+import 'package:proxiable/src/annotation/proxiable.dart' as prefix2;
+import 'package:proxiable/src/annotation/reflected.dart' as prefix0;
 
 // ignore_for_file: unnecessary_const
 
@@ -15,14 +16,14 @@ import "package:reflectable/src/reflectable_builder_based.dart" as r;
 import "package:reflectable/reflectable.dart" as r show Reflectable;
 
 final _data = <r.Reflectable, r.ReflectorData>{
-  const prefix0.Proxiable(): r.ReflectorData(
+  const prefix0.Reflected(): r.ReflectorData(
       <m.TypeMirror>[
         r.NonGenericClassMirrorImpl(
             r"Animal",
             r".Animal",
             7,
             0,
-            const prefix0.Proxiable(),
+            const prefix0.Reflected(),
             const <int>[0, 1],
             const <int>[2, 3, 4, 5, 6, 0],
             const <int>[],
@@ -38,25 +39,25 @@ final _data = <r.Reflectable, r.ReflectorData>{
       ],
       <m.DeclarationMirror>[
         r.MethodMirrorImpl(r"walk", 262146, 0, null, -1, -1, null,
-            const <int>[], const prefix0.Proxiable(), null),
+            const <int>[], const prefix0.Reflected(), null),
         r.MethodMirrorImpl(r"", 64, 0, -1, -1, -1, null, const <int>[],
-            const prefix0.Proxiable(), null),
+            const prefix0.Reflected(), null),
         r.MethodMirrorImpl(r"==", 131074, null, -1, -1, -1, null,
-            const <int>[0], const prefix0.Proxiable(), null),
+            const <int>[0], const prefix0.Reflected(), null),
         r.MethodMirrorImpl(r"toString", 131074, null, -1, -1, -1, null,
-            const <int>[], const prefix0.Proxiable(), null),
+            const <int>[], const prefix0.Reflected(), null),
         r.MethodMirrorImpl(r"noSuchMethod", 65538, null, null, -1, -1, null,
-            const <int>[1], const prefix0.Proxiable(), null),
+            const <int>[1], const prefix0.Reflected(), null),
         r.MethodMirrorImpl(r"hashCode", 131075, null, -1, -1, -1, null,
-            const <int>[], const prefix0.Proxiable(), null),
+            const <int>[], const prefix0.Reflected(), null),
         r.MethodMirrorImpl(r"runtimeType", 131075, null, -1, -1, -1, null,
-            const <int>[], const prefix0.Proxiable(), null)
+            const <int>[], const prefix0.Reflected(), null)
       ],
       <m.ParameterMirror>[
-        r.ParameterMirrorImpl(r"other", 16390, 2, const prefix0.Proxiable(),
+        r.ParameterMirrorImpl(r"other", 16390, 2, const prefix0.Reflected(),
             null, -1, -1, null, null, null, null),
         r.ParameterMirrorImpl(r"invocation", 32774, 4,
-            const prefix0.Proxiable(), -1, -1, -1, null, null, null, null)
+            const prefix0.Reflected(), -1, -1, -1, null, null, null, null)
       ],
       <Type>[prefix1.Animal],
       1,
@@ -70,7 +71,9 @@ final _data = <r.Reflectable, r.ReflectorData>{
       },
       {},
       null,
-      [])
+      []),
+  const prefix2.Proxiable(): r.ReflectorData(
+      <m.TypeMirror>[], null, null, <Type>[prefix1.Animal], 1, {}, {}, null, [])
 };
 
 final _memberSymbolMap = null;

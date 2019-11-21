@@ -1,6 +1,6 @@
 import 'package:proxiable/proxiable.dart';
 
-@proxiable
+@Proxiable()
 class Animal {
   void walk() {
     print("${this.runtimeType} walks");

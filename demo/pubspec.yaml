@@ -10,7 +10,7 @@ environment:
 dependencies:
   proxiable:
     path: ../proxiable
-  reflectable: any
+  reflectable: ^2.2.0
 #  path: ^1.6.0
 
 dev_dependencies:

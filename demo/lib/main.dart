@@ -14,4 +14,6 @@ void main() {
     DefaultInvocationHandler(Animal()),
   );
   animal.walk();
+  print(animal.runtimeType);
+  print(animal.toString());
 }
