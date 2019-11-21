@@ -8,6 +8,16 @@ class Proxied {
   Type proxiedType;
 
   @override
+  Type get runtimeType => proxiedType;
+
+  String toString() {
+    if (super.toString() == "Instance of '\$${this.proxiedType}Proxy'") {
+      return "Instance of '${this.runtimeType}'";
+    }
+    return super.toString();
+  }
+
+  @override
   dynamic noSuchMethod(Invocation invocation) {
     String memberName = invocation.memberName
         .toString()
@@ -15,8 +25,8 @@ class Proxied {
         .replaceAll("=", "");
 
     if (!invocation.isAccessor) {
-      var methodMirror = (proxiable.reflectType(proxiedType) as ClassMirror)
-          .declarations[memberName];
+      var methodMirror =
+          (proxiable.reflectType(proxiedType) as ClassMirror).declarations[memberName];
       return invocationHandler.invoke(
         this,
         methodMirror,
@@ -26,8 +36,7 @@ class Proxied {
     }
 
     VariableMirror variableMirror =
-        (proxiable.reflectType(proxiedType) as ClassMirror)
-            .declarations[memberName];
+        (proxiable.reflectType(proxiedType) as ClassMirror).declarations[memberName];
 
     if (invocation.isSetter) {
       invocationHandler.set(
