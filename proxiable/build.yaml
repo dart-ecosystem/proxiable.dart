@@ -4,12 +4,8 @@ targets:
     builders:
       proxiable|proxiableCollector:
         enabled: true
-        generate_for:
-          exclude: ['lib/generated/**']
       proxiable|proxiableCombiner:
         enabled: true
-        generate_for:
-          exclude: ['lib/generated/**']
 builders:
   proxiable|proxiableCollector:
     import: 'package:proxiable/src/builder/builder.dart'
@@ -21,7 +17,7 @@ builders:
   proxiable|proxiableCombiner:
     import: 'package:proxiable/src/builder/builder.dart'
     builder_factories: ['proxiableCombiner']
-    build_extensions: { '.dart': ['.proxiable.g.dart'] }
+    build_extensions: { '.dart': ['/generated/proxiable.dart'] }
     runs_before: ['reflectable']
     auto_apply: root_package
     build_to: source
