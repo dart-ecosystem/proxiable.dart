@@ -8,7 +8,4 @@ Builder proxiableCollector(BuilderOptions options) => LibraryBuilder(
       generatedExtension: '.proxiable_cache.dart',
     );
 
-Builder proxiableCombiner(BuilderOptions options) => LibraryBuilder(
-      ProxiableCombiner(),
-      generatedExtension: '.proxiable.dart',
-    );
+Builder proxiableCombiner(BuilderOptions options) => ProxiableCombiner();
