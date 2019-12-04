@@ -12,6 +12,7 @@ doc/api/
 
 # Misc
 .DS_Store
+.vscode
 
 # IDE
 .idea

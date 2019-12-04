@@ -1,5 +1,7 @@
+import 'package:reflectable_annotation/reflectable_annotation.dart';
+@GlobalQuantifyMetaCapability(Proxiable, reflected)
 import 'package:reflectable/reflectable.dart';
 
-class Proxiable extends Reflectable {
+class Proxiable {
   const Proxiable();
 }

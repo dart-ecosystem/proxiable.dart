@@ -2,7 +2,7 @@ name: proxiable
 description: >
   Proxy provides static methods for creating dynamic proxy classes and instances,
   and it is also the superclass of all dynamic proxy classes created by those methods.
-version: 0.4.1
+version: 0.4.1+2
 homepage: https://github.com/copydog/proxiable
 author: Copydog <775150@qq.com>
 
@@ -11,13 +11,14 @@ environment:
 
 dependencies:
   reflectable: ^2.2.0
-  analyzer: ^0.39.1
+  analyzer: ^0.38.0
   build: ^1.2.0
   source_gen: '>=0.8.0'
   build_config: '>=0.3.0'
   glob: ^1.2.0
-  mustache: 1.1.1
+  mustache: ^1.1.1
   build_runner: ^1.7.0
+  reflectable_annotation: ^1.0.0
 
 dev_dependencies:
   pedantic: ^1.7.0

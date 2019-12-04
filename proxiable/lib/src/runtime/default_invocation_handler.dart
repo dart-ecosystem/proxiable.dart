@@ -1,7 +1,7 @@
 import 'package:proxiable/src/annotation/proxiable.dart';
-import 'package:proxiable/src/annotation/reflected.dart';
 import 'package:proxiable/src/runtime/invocation_handler.dart';
 import 'package:reflectable/reflectable.dart';
+import 'package:reflectable_annotation/reflectable_annotation.dart';
 
 class DefaultInvocationHandler implements InvocationHandler {
   Object instance;
