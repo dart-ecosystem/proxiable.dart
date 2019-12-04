@@ -4,10 +4,8 @@ import 'dart:convert';
 import 'package:build/build.dart';
 import 'package:build/src/builder/build_step.dart';
 import 'package:glob/glob.dart';
-import 'package:mustache/mustache.dart';
-import 'package:proxiable/src/builder/data/cache_object.dart';
-import 'package:proxiable/src/builder/template/proxiable_template.dart';
-import 'package:proxiable/src/builder/util/cache_utils.dart';
+import 'package:proxiable/src/builder/cache/proxiable_cache.dart';
+import 'package:proxiable/src/builder/util/template_utils.dart';
 
 class ProxiableCombiner extends Builder {
   @override
@@ -17,7 +15,7 @@ class ProxiableCombiner extends Builder {
 
     final proxiableCacheAssetIds = await buildStep
         .findAssets(
-          Glob("**/*.proxiable_cache.dart"),
+          Glob("**/*.proxiable.json"),
         )
         .toList();
 
@@ -25,18 +23,17 @@ class ProxiableCombiner extends Builder {
       proxiableCache.add((await buildStep.readAsString(assetId)).trim());
     }
 
-    final decodedProxiableCache = proxiableCache
-        .map((e) => CacheUtils.decode(e))
-        .map((e) => e.first)
-        .map((e) => json.decode(e))
-        .map((e) => CacheObject.fromJson(e))
-        .toList();
+    final decodedProxiableCache =
+        proxiableCache.map((e) => json.decode(e)).map((e) => ProxiableCache.fromJson(e)).toList();
+
+    List<String> classNames = [];
+
+    for (var cache in decodedProxiableCache) {
+      classNames.addAll(cache.names);
+    }
 
     // write to file
-    String content = Template(proxiable_template).renderString({
-      "caches": decodedProxiableCache,
-      "packageName": packageName,
-    });
+    String content = TemplateUtils.generateString(classNames);
     String package = buildStep.inputId.package;
     AssetId outputId = AssetId(package, "lib/generated/proxiable.dart");
     await buildStep.writeAsString(outputId, content);
