@@ -1,4 +1,4 @@
-import 'package:analyzer/dart/element/element.dart';
+import 'package:matchable_builder/matchable_builder.dart';
 
 abstract class ClassElementConstructorUtils {
   static bool containsDefaultConstructor(ClassElement classElement) {

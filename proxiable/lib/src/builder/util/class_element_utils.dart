@@ -1,4 +1,4 @@
-import 'package:analyzer/dart/element/element.dart';
+import 'package:matchable_builder/matchable_builder.dart';
 
 abstract class ClassElementUtils {
   static String getClassName(ClassElement classElement) {
