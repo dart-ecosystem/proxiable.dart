@@ -18,7 +18,7 @@ class DefaultInvocationHandler implements InvocationHandler {
     List<Object> args, [
     Map<Symbol, dynamic> namedArgs,
   ]) {
-    return instanceMirror.invoke(method.simpleName, [], namedArgs);
+    return instanceMirror.invoke(method.simpleName, args, namedArgs);
   }
 
   @override
