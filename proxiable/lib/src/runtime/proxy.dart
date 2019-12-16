@@ -21,6 +21,10 @@ class Proxy {
     assert(h != null, "InvocationHandler can NOT be null.");
 
     ProxyCreator proxiedType = proxyMapping.get(loader);
+    assert(
+      proxiedType != null,
+      "$loader is NOT proxiable. Did you forget Annotate it with @Proxiable?",
+    );
 //    ClassMirror classMirror = proxiable.reflectType(proxiedType);
     return (proxiedType() as Proxied)
       ..invocationHandler = h

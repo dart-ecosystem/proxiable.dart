@@ -1,47 +1,32 @@
 import 'dart:async';
 
-import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:build/src/builder/build_step.dart';
+import 'package:matchable_builder/matchable_builder.dart';
 import 'package:proxiable/src/annotation/proxiable.dart';
-import 'package:proxiable/src/builder/cache/proxiable_cache.dart';
-import 'package:proxiable/src/builder/util/class_element_constructor_utils.dart';
-import 'package:source_gen/source_gen.dart';
+import 'package:proxiable/src/builder/proxiable_cache.dart';
 
-class ProxiableCollector extends Builder {
-  static TypeChecker typeChecker = TypeChecker.fromRuntime(Proxiable);
-
+class ProxiableCollector extends MatchableBuilder {
   @override
-  FutureOr<void> build(BuildStep buildStep) async {
-    List<String> classNames = [];
-
-    // read classNames
-    LibraryReader libReader = LibraryReader(await buildStep.inputLibrary);
-    Iterable<Element> elements = libReader.annotatedWith(typeChecker).map((e) => e.element);
-    for (var element in elements) {
-      if (element is! ClassElement) {
-        continue;
-      }
-
-      if (!ClassElementConstructorUtils.containsDefaultConstructor(element as ClassElement)) {
-        continue;
-      }
-
-      classNames.add(element.name);
-    }
-
-    if (classNames.isEmpty) {
-      return;
-    }
-
-    // write to cache
-    var cache = ProxiableCache(names: classNames);
-    AssetId outputId = buildStep.inputId.changeExtension(".proxiable.json");
-    await buildStep.writeAsString(outputId, cache.toString());
-  }
+  Matcher get matcher => Matcher.and([
+        ElementTypeMatcher<Proxiable>(),
+        ClassElementMatcher(),
+        FileSchemaMatcher("package"),
+      ]);
 
   @override
   Map<String, List<String>> get buildExtensions => {
         '.dart': ['.proxiable.json']
       };
+
+  ProxiableCollector(BuilderOptions options) : super(options);
+
+  @override
+  FutureOr<void> generate(List<Element> elements, BuildStep buildStep) async {
+    final classNames = elements.map((e) => e.name).toList();
+    // write to cache
+    final cache = ProxiableCache(names: classNames);
+    final outputId = buildStep.inputId.changeExtension(".proxiable.json");
+    await buildStep.writeAsString(outputId, cache.toString());
+  }
 }

@@ -1,8 +1,8 @@
 abstract class TemplateUtils {
-  static String generateString(List<String> classNames) {
+  static String generateString(String packageName, List<String> classNames) {
     return [
       "// Basic Imports",
-      "import 'exporter.dart';",
+      "import 'package:$packageName/generated/exporter/exporter.dart';",
       "import 'package:proxiable/proxiable.dart';",
       "import 'package:proxiable/src/runtime/proxied.dart';",
       "// Generated Proxied Classes",

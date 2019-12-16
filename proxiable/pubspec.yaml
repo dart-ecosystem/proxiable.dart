@@ -11,13 +11,10 @@ environment:
 
 dependencies:
   reflectable: ^2.2.0
-  analyzer: '>=0.36.0 <0.39.0'
   build: ^1.2.0
-  source_gen: '>=0.8.0'
-  build_config: '>=0.3.0'
-  glob: ^1.2.0
   reflectable_annotation: ^1.0.0
-  exporter: ^0.1.0
+  exporter: ^1.0.2
+  matchable_builder: ^0.4.1
 
 dev_dependencies:
   pedantic: ^1.7.0

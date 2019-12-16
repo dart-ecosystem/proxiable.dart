@@ -1,23 +1,29 @@
-# Read about `build.yaml` at https://pub.dartlang.org/packages/build_config
-targets:
-  $default:
-    builders:
-      proxiable|proxiableCollector:
-        enabled: true
-      proxiable|proxiableCombiner:
-        enabled: true
 builders:
-  proxiable|proxiableCollector:
+  proxiable|locator:
+    import: 'package:generated_locator/src/builder.dart'
+    builder_factories: ['extraLocatorBuilder']
+    build_extensions: { 'pubspec.yaml': ['proxiable.extra_locator'] }
+    auto_apply: root_package
+    build_to: cache
+    defaults:
+      generate_for:
+        include:
+          - pubspec.yaml
+        exclude:
+          - lib/**
+      options:
+        extra_locator_name: proxiable
+  proxiable|collector:
     import: 'package:proxiable/src/builder/builder.dart'
     builder_factories: ['proxiableCollector']
     build_extensions: { '.dart': ['.proxiable.json'] }
     runs_before: ['proxiable|proxiableCombiner']
     auto_apply: root_package
     build_to: cache
-  proxiable|proxiableCombiner:
+  proxiable|combiner:
     import: 'package:proxiable/src/builder/builder.dart'
     builder_factories: ['proxiableCombiner']
-    build_extensions: { '.dart': ['/generated/proxiable.dart'] }
+    build_extensions: { 'proxiable.locator': ['proxiable.dart'] }
     runs_before: ['reflectable']
     auto_apply: root_package
     build_to: source
