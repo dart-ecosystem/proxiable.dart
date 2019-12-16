@@ -9,7 +9,7 @@ import 'package:proxiable/src/builder/proxiable_cache.dart';
 class ProxiableCollector extends MatchableBuilder {
   @override
   Matcher get matcher => Matcher.and([
-        ElementTypeMatcher<Proxiable>(),
+        ElementAnnotationMatcher<Proxiable>(),
         ClassElementMatcher(),
         FileSchemaMatcher("package"),
       ]);
@@ -23,6 +23,9 @@ class ProxiableCollector extends MatchableBuilder {
 
   @override
   FutureOr<void> generate(List<Element> elements, BuildStep buildStep) async {
+    if (elements.isEmpty) {
+      return;
+    }
     final classNames = elements.map((e) => e.name).toList();
     // write to cache
     final cache = ProxiableCache(names: classNames);

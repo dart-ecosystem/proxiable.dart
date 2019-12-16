@@ -17,13 +17,12 @@ builders:
     import: 'package:proxiable/src/builder/builder.dart'
     builder_factories: ['proxiableCollector']
     build_extensions: { '.dart': ['.proxiable.json'] }
-    runs_before: ['proxiable|proxiableCombiner']
     auto_apply: root_package
     build_to: cache
   proxiable|combiner:
     import: 'package:proxiable/src/builder/builder.dart'
     builder_factories: ['proxiableCombiner']
     build_extensions: { 'proxiable.locator': ['proxiable.dart'] }
-    runs_before: ['reflectable']
+    required_inputs: ['.proxiable.json']
     auto_apply: root_package
     build_to: source
