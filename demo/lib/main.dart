@@ -1,11 +1,13 @@
 library demo;
 
+import 'package:demo/generated/proxiable/proxiable.dart';
 import 'package:demo/main.reflectable.dart';
 import 'package:demo/src/Animal.dart';
 import 'package:proxiable/proxiable.dart';
 
 void main() {
   initializeReflectable();
+  initializeProxiable();
   Animal animal = Proxy.newProxyInstance(
     Animal,
     DefaultInvocationHandler(Animal()),
