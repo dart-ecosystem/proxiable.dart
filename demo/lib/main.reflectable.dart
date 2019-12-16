@@ -3,7 +3,8 @@
 
 import "dart:core";
 import 'package:demo/src/Animal.dart' as prefix1;
-import 'package:proxiable/src/annotation/proxiable.dart' as prefix2;
+import 'package:exporter/src/annotation/export.dart' as prefix2;
+import 'package:proxiable/src/annotation/proxiable.dart' as prefix3;
 import 'package:reflectable_annotation/src/reflected.dart' as prefix0;
 
 // ignore_for_file: unnecessary_const
@@ -34,7 +35,7 @@ final _data = <r.Reflectable, r.ReflectorData>{
             0,
             0,
             const <int>[],
-            const <Object>[const prefix2.Proxiable()],
+            const <Object>[const prefix2.Export(), const prefix3.Proxiable()],
             null),
         r.NonGenericClassMirrorImpl(
             r"Object",

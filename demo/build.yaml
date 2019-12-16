@@ -6,3 +6,5 @@ targets:
           - lib/main.dart
         options:
           formatted: true
+      exporter|collector:
+        enabled: true
